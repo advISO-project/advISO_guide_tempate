@@ -3,7 +3,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'advISO Bioinformatics Validation Guide'
-copyright = 'advISO 2026'
+copyright = '2026, licensed under CC BY-NC-SA 4.0'
 author = 'advISO'
 
 release = '0.1'
