@@ -1,7 +1,10 @@
-===========================================================================
+.. in rst headings are formated with a line of "=" or "-" characters above and below the heading text. The number of characters in the line should match the length of the heading text. For example:
+==========
 Background
-===========================================================================
+==========
 
+.. subheadings are formatted with a line of "-" characters above and below the heading text. The number of characters in the line should match the length of the heading text. For example:
+-----------------------------------------------
 Genomics in clinical and public health practice
 -----------------------------------------------
 
