@@ -4,6 +4,8 @@ docs/_build/
 # Generated assets (built from conf.py settings)
 docs/source/_static/logo.png
 docs/source/_static/custom.css
+docs/source/_static/button_horizontal.png
+docs/source/_static/button_website.png
 
 # Python
 __pycache__/

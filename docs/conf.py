@@ -109,7 +109,9 @@ epub_show_urls = 'footnote'
 
 sys.path.insert(0, os.path.dirname(__file__))
 from generate_logo import generate_logo
+from generate_buttons import generate_buttons
 generate_logo(guide_subtitle)
+generate_buttons(guide_subtitle, sidebar_color)
 
 _css_path = os.path.join(os.path.dirname(__file__), 'source', '_static', 'custom.css')
 with open(_css_path, 'w') as _f:
