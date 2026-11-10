@@ -1,4 +1,6 @@
 # Configuration file for the Sphinx documentation builder.
+from datetime import date
+
 #
 # ============================================================================
 # GUIDE SETTINGS — edit these to configure your guide
@@ -26,9 +28,18 @@ html_logo = 'source/_static/logo.png'
 
 project = guide_name
 
+exclude_patterns = [
+    '_build',
+    'source/intro.md',
+    'source/guide_series.md',
+    'source/project_partners.md',
+    'source/toc.md',
+]
+
 # -- Extensions --------------------------------------------------------------
 
 extensions = [
+    'myst_parser',
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
@@ -39,16 +50,22 @@ extensions = [
     'sphinx_tabs.tabs',
 ]
 
-# -- Substitutions -----------------------------------------------------------
+# -- MyST (Markdown) configuration ------------------------------------------
 
-rst_epilog = f"""
-.. |release| replace:: {release}
-.. |version| replace:: {version}
-.. |guide_name| replace:: {guide_name}
-.. |github_repo| replace:: {github_repo}
-"""
+myst_enable_extensions = [
+    'colon_fence',
+    'substitution',
+]
 
 today_fmt = "%Y-%m-%d"
+
+myst_substitutions = {
+    'guide_name': guide_name,
+    'release': release,
+    'version': version,
+    'github_repo': github_repo,
+    'today_date': date.today().strftime(today_fmt),
+}
 
 # -- Intersphinx -------------------------------------------------------------
 
