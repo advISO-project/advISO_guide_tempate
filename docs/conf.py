@@ -2,7 +2,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'advISO Bioinformatics Validation Guide'
+guide_name = 'advISO Bioinformatics Validation Guide'
 copyright = '2026, licensed under CC BY-NC-SA 4.0'
 author = 'advISO'
 
@@ -32,7 +32,6 @@ intersphinx_disabled_domains = ['std']
 # -- Custom substitutions ----------------------------------------------------
 
 # These let you use |version|, |release|, and |guide_name| in your .rst files
-guide_name = project
 rst_epilog = f"""
 .. |release| replace:: {release}
 .. |version| replace:: {version}
@@ -75,4 +74,3 @@ def setup(app):
 
 under_development = True  # Set to True if the guide is under development, False otherwise
 
-guide_name = "advISO Bioinformatics Validation Guide"
