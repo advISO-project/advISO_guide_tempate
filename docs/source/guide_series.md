@@ -7,7 +7,7 @@ laboratories working toward ISO accreditation:
 :gutter: 3
 
 :::{grid-item}
-```{image} https://adviso-guide-series.readthedocs.io/en/latest/_static/button_horizontal.png
+```{image} _static/guide_series_button_horizontal.png
 :target: https://adviso-guide-series.readthedocs.io/en/latest/
 :alt: advISO Guide Series
 :width: 100%
