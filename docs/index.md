@@ -5,7 +5,7 @@
 :::{ifconfig} under_development
 
 ```{attention}
-This guide is still under development. Please check back for updates, and feel free to provide feedback or suggestions via the [GitHub repository](https://github.com/advISO-project/advISO_validation_guide/issues).
+This guide is still under development. Please check back for updates, and feel free to provide feedback or suggestions via the [GitHub repository]({{ github_repo }}/issues).
 ```
 
 :::
