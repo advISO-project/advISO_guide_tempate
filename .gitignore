@@ -1,0 +1,12 @@
+# Sphinx build output
+docs/_build/
+
+# Generated logo (built from logo_base.png + guide_subtitle)
+docs/source/_static/logo.png
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store

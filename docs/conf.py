@@ -1,4 +1,6 @@
 # Configuration file for the Sphinx documentation builder.
+import os
+import sys
 from datetime import date
 
 #
@@ -15,6 +17,9 @@ version = '0.1.0'
 
 ## To do: Set under_development to True if the guide is still under development, or False if it is ready for release. This controls whether the "under development" message is displayed on the index page.
 under_development = True
+
+## To do: Set the guide subtitle that appears on the logo (e.g. "Validation Guide", "SOP Guide").
+guide_subtitle = 'Validation Guide'
 
 # Set the GitHub repository URL for the guide. This is used to generate links to the guide's source code and issues on GitHub.
 github_repo = 'https://github.com/advISO-project/advISO_validation_guide'
@@ -96,6 +101,12 @@ html_theme_options = {
 # -- EPUB output -------------------------------------------------------------
 
 epub_show_urls = 'footnote'
+
+# -- Logo generation ---------------------------------------------------------
+
+sys.path.insert(0, os.path.dirname(__file__))
+from generate_logo import generate_logo
+generate_logo(guide_subtitle)
 
 # -- Custom config values ----------------------------------------------------
 
