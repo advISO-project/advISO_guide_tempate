@@ -2,4 +2,4 @@
     :hidden:
     :maxdepth: 2
 
-    example_page
+    source/example_page
