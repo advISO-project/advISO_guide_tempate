@@ -127,20 +127,27 @@ def generate_website_banner(subtitle, bg_color, static_dir=None):
     canvas = _rounded_rect((width, height), corner_radius, (*bg_rgb, 255))
     canvas.paste(base, (0, 0), base)
 
-    # Find where the 'advISO' text starts and ends vertically
-    import numpy as np
-    alpha = np.array(base)[:, :, 3]
+    # Find where the 'advISO' text starts and ends vertically (pure Pillow)
+    alpha = base.split()[3]
+    pixels = alpha.load()
 
-    # Find advISO text region (content after the box, x > 1000)
-    text_region = alpha[:, 1000:]
-    col_sums = text_region.sum(axis=0)
-    threshold = col_sums.max() * 0.02
-    text_x_start = np.where(col_sums > threshold)[0][0] + 1000
+    # Column sums for x > 1000 to find where advISO text starts
+    col_sums = []
+    for x in range(1000, width):
+        s = sum(pixels[x, y] for y in range(height))
+        col_sums.append(s)
+    max_col = max(col_sums)
+    threshold = max_col * 0.02
+    text_x_start = next(i for i, s in enumerate(col_sums) if s > threshold) + 1000
 
-    row_sums = text_region.sum(axis=1)
-    threshold_r = row_sums.max() * 0.02
-    text_rows = np.where(row_sums > threshold_r)[0]
-    text_y_bottom = text_rows[-1]
+    # Row sums in the text region to find bottom of advISO
+    row_sums = []
+    for y in range(height):
+        s = sum(pixels[x, y] for x in range(1000, width))
+        row_sums.append(s)
+    max_row = max(row_sums)
+    threshold_r = max_row * 0.02
+    text_y_bottom = max(y for y, s in enumerate(row_sums) if s > threshold_r)
 
     font_path, font_index = _find_font()
     max_text_w = width - text_x_start - 40
