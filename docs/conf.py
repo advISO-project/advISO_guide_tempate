@@ -9,7 +9,7 @@ from datetime import date
 # ============================================================================
 
 ## To do: Update guide name, author, copyright, release, version, and github_repo to match your guide.
-guide_name = 'advISO Bioinformatics Validation Guide'
+guide_name = 'advISO Guide Template'
 author = 'advISO'
 copyright = '2026, licensed under CC BY-NC-SA 4.0'
 release = '0.1'
@@ -19,10 +19,10 @@ version = '0.1.0'
 under_development = True
 
 ## To do: Set the guide subtitle that appears on the logo (e.g. "Validation Guide", "SOP Guide").
-guide_subtitle = 'Validation Guide'
+guide_subtitle = 'Guide Template'
 
 # Set the GitHub repository URL for the guide. This is used to generate links to the guide's source code and issues on GitHub.
-github_repo = 'https://github.com/advISO-project/advISO_validation_guide'
+github_repo = 'https://github.com/advISO-project/advISO_guide_template'
 
 html_logo = 'source/_static/logo.png'
 
