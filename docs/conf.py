@@ -31,10 +31,12 @@ intersphinx_disabled_domains = ['std']
 
 # -- Custom substitutions ----------------------------------------------------
 
-# These let you use |version| and |release| in your .rst files
+# These let you use |version|, |release|, and |guide_name| in your .rst files
+guide_name = project
 rst_epilog = f"""
 .. |release| replace:: {release}
 .. |version| replace:: {version}
+.. |guide_name| replace:: {guide_name}
 """
 
 # Use dynamic date for |today|
@@ -72,3 +74,5 @@ def setup(app):
     app.add_config_value('under_development', False, 'env')
 
 under_development = True  # Set to True if the guide is under development, False otherwise
+
+guide_name = "advISO Bioinformatics Validation Guide"
