@@ -73,32 +73,52 @@ def generate_button(subtitle, bg_color, static_dir=None):
     width, height = 1800, 300
     padding_x = 15
     padding_y = 10
-    corner_radius = 30
+    corner_radius = 50
 
     canvas = _rounded_rect((width, height), corner_radius, (*bg_rgb, 255))
 
     base = Image.open(base_path).convert('RGBA')
     base_w, base_h = base.size
-    logo_h = height - (padding_y * 2)
-    logo_scale = logo_h / base_h
-    logo_w = int(base_w * logo_scale)
-    logo = base.resize((logo_w, logo_h), Image.LANCZOS)
-    logo_y = (height - logo_h) // 2
+
+    # Scale base to fit canvas width (base includes blank area for subtitle)
+    inner_w = width - (padding_x * 2)
+    scale = inner_w / base_w
+    scaled_w = inner_w
+    scaled_h = int(base_h * scale)
+    logo = base.resize((scaled_w, scaled_h), Image.LANCZOS)
+    logo_y = (height - scaled_h) // 2
     canvas.paste(logo, (padding_x, logo_y), logo)
+
+    # Find rightmost content (divider line) and advISO vertical position
+    alpha = logo.split()[3]
+    pixels = alpha.load()
+    divider_x = 0
+    for x in range(scaled_w - 1, 0, -1):
+        col_sum = sum(pixels[x, y] for y in range(scaled_h))
+        if col_sum > 0:
+            divider_x = x
+            break
+
+    # Find vertical centre of the divider line
+    divider_rows = [y for y in range(scaled_h) if pixels[divider_x, y] > 0]
+    if divider_rows:
+        bar_centre_y = logo_y + (divider_rows[0] + divider_rows[-1]) // 2
+    else:
+        bar_centre_y = height // 2
 
     draw = ImageDraw.Draw(canvas)
 
-    font_path, font_index = _find_font(italic=True)
-    text_left = padding_x + logo_w + 25
+    font_path, font_index = _find_font(italic=False)
+    text_left = padding_x + divider_x + 40
     text_area_w = width - text_left - padding_x
     if font_path:
-        font = _fit_font(font_path, subtitle, text_area_w, int(height * 0.55), index=font_index)
+        font = _fit_font(font_path, subtitle, text_area_w, int(height * 0.30), index=font_index)
     else:
         font = ImageFont.load_default()
 
     bbox = font.getbbox(subtitle)
     text_h = bbox[3] - bbox[1]
-    text_y = (height - text_h) // 2 - bbox[1]
+    text_y = bar_centre_y - text_h // 2 - bbox[1] + int(height * 0.06)
     draw.text((text_left, text_y), subtitle, fill=SUBTITLE_COLOR, font=font)
 
     canvas.save(out_path)
