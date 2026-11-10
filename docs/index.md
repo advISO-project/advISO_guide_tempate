@@ -2,19 +2,23 @@
 
 **Release:** {{ release }}  [{{ today_date }}]
 
-:::{ifconfig} under_development
+::::{ifconfig} under_development
 
-```{attention}
-This guide is still under development. Please check back for updates, and feel free to provide feedback or suggestions via the [GitHub repository]({{ github_repo }}/issues).
-```
-
+:::{attention}
+This guide is still under development. Please check back for updates, and feel free to provide feedback or suggestions via the {{ github_issues_link }}.
 :::
+
+::::
 
 ```{include} source/intro.md
 ```
 
+---
+
 ```{include} source/guide_series.md
 ```
+
+---
 
 ```{include} source/project_partners.md
 ```

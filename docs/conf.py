@@ -64,6 +64,7 @@ myst_substitutions = {
     'release': release,
     'version': version,
     'github_repo': github_repo,
+    'github_issues_link': f'[GitHub repository]({github_repo}/issues)',
     'today_date': date.today().strftime(today_fmt),
 }
 
