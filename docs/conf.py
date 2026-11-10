@@ -18,7 +18,8 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'sphinx_design',
-    'sphinx_tabs.tabs'
+    'sphinx_tabs.tabs',
+    'sphinx.ext.ifconfig'
 ]
 
 intersphinx_mapping = {
@@ -64,3 +65,10 @@ html_theme_options = {
 # -- Options for EPUB output -------------------------------------------------
 
 epub_show_urls = 'footnote'
+
+
+# -- Custom configuration variables ------------------------------------------
+def setup(app):
+    app.add_config_value('under_development', False, 'env')
+
+under_development = True  # Set to True if the guide is under development, False otherwise

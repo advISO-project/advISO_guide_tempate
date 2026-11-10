@@ -4,12 +4,10 @@ Welcome to the advISO |project| Guide
 
 **Release:** |release|  [|today|]
 
-{% if under_development == True %}
-..  attention::
+.. ifconfig:: under_development
+   ..  attention::
 
-   This guide is still under development. Please check back for updates, and feel free to provide feedback or suggestions via the `GitHub repository <https://github.com/advISO-project/advISO_validation_guide/issues>`_.
-
-{% endif %}
+      This guide is still under development. Please check back for updates, and feel free to provide feedback or suggestions via the `GitHub repository <https://github.com/advISO-project/advISO_validation_guide/issues>`_.
 
 .. include:: source/intro.rst
 
