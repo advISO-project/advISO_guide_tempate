@@ -13,7 +13,7 @@ FONT_CANDIDATES = [
     'C:/Windows/Fonts/arialbd.ttf',                                # Windows
 ]
 
-SUBTITLE_COLOR = (23, 24, 23)
+DEFAULT_SUBTITLE_COLOR = (23, 24, 23)
 
 
 def _find_font():
@@ -62,7 +62,7 @@ def generate_logo(subtitle, static_dir=None):
     draw = ImageDraw.Draw(canvas)
     text_x = (base_w - text_w) // 2
     text_y = base_h + padding - bbox[1]
-    draw.text((text_x, text_y), subtitle, fill=SUBTITLE_COLOR, font=font)
+    draw.text((text_x, text_y), subtitle, fill=DEFAULT_SUBTITLE_COLOR, font=font)
 
     canvas.save(out_path)
 

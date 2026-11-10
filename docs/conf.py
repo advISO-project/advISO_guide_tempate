@@ -21,7 +21,10 @@ under_development = True
 ## To do: Set the guide subtitle that appears on the logo (e.g. "Validation Guide", "SOP Guide").
 guide_subtitle = 'Guide Template'
 
-# Set the GitHub repository URL for the guide. This is used to generate links to the guide's source code and issues on GitHub.
+## To do: Set the sidebar background colour (hex).
+sidebar_color = '#5C9AD0'
+
+# To do: Set the GitHub repository URL for the guide. This is used to generate links to the guide's source code and issues on GitHub.
 github_repo = 'https://github.com/advISO-project/advISO_guide_template'
 
 html_logo = 'source/_static/logo.png'
@@ -102,11 +105,29 @@ html_theme_options = {
 
 epub_show_urls = 'footnote'
 
-# -- Logo generation ---------------------------------------------------------
+# -- Build-time asset generation ---------------------------------------------
 
 sys.path.insert(0, os.path.dirname(__file__))
 from generate_logo import generate_logo
 generate_logo(guide_subtitle)
+
+_css_path = os.path.join(os.path.dirname(__file__), 'source', '_static', 'custom.css')
+with open(_css_path, 'w') as _f:
+    _f.write(f""".wy-side-nav-search,
+.wy-nav-top {{
+    background: {sidebar_color};
+}}
+
+.guide-button {{
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  transition: transform .15s, box-shadow .15s;
+}}
+.guide-button:hover {{
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.25);
+}}
+""")
 
 # -- Custom config values ----------------------------------------------------
 

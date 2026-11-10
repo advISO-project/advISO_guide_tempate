@@ -1,8 +1,9 @@
 # Sphinx build output
 docs/_build/
 
-# Generated logo (built from logo_base.png + guide_subtitle)
+# Generated assets (built from conf.py settings)
 docs/source/_static/logo.png
+docs/source/_static/custom.css
 
 # Python
 __pycache__/
