@@ -1,0 +1,15 @@
+# Sphinx build output
+docs/_build/
+
+# Generated assets (built from conf.py settings)
+docs/_static/images/logo.png
+docs/_static/brand/button_horizontal.png
+docs/_static/brand/button_website.png
+docs/_static/custom.css
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
