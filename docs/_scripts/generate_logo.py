@@ -38,7 +38,7 @@ def generate_logo(subtitle, docs_dir=None):
 
     font_path = _find_font()
     max_text_w = base_w - 40
-    font_size = int(base_w * 0.17)
+    font_size = int(base_w * 0.13)
 
     if font_path:
         font = ImageFont.truetype(font_path, font_size)
