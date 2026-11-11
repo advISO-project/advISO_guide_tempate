@@ -69,6 +69,9 @@ today_fmt = "%Y-%m-%d"
 
 myst_substitutions = {
     'guide_name': guide_name,
+    'guide_subtitle': guide_subtitle,
+    'sidebar_color': sidebar_color,
+
     'release': release,
     'version': version,
     'github_repo': github_repo,
@@ -130,6 +133,10 @@ with open(_css_path, 'w') as _f:
   box-shadow: 0 6px 14px rgba(0,0,0,.25);
 }}
 """)
+
+_settings_path = os.path.join(os.path.dirname(__file__), '_brand_assets', '_settings.html')
+with open(_settings_path, 'w') as _f:
+    _f.write(f'<p>Current settings: subtitle <strong>“{guide_subtitle}”</strong>, colour <span style="display:inline-block;width:14px;height:14px;background:{sidebar_color};border-radius:3px;vertical-align:middle;margin-right:4px;border:1px solid #ccc;"></span><strong>{sidebar_color}</strong>.</p>')
 
 # -- Custom config values ----------------------------------------------------
 
