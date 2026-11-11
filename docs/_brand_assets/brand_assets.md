@@ -12,7 +12,7 @@ Current settings: subtitle **"{{ guide_name }}"**, colour **#5C9AD0**.
 
 ## Sidebar Logo
 
-```{image} _static/logo.png
+```{image} ../_static/images/logo.png
 :alt: Sidebar logo
 :width: 300px
 ```
@@ -21,7 +21,7 @@ Current settings: subtitle **"{{ guide_name }}"**, colour **#5C9AD0**.
 
 ## Horizontal Button
 
-```{image} _static/button_horizontal.png
+```{image} ../_static/brand/button_horizontal.png
 :alt: Horizontal button
 :width: 100%
 ```
@@ -30,7 +30,7 @@ Current settings: subtitle **"{{ guide_name }}"**, colour **#5C9AD0**.
 
 ## Website Banner (16:9)
 
-```{image} _static/button_website.png
+```{image} ../_static/brand/button_website.png
 :alt: Website banner
 :width: 100%
 ```

@@ -2,10 +2,10 @@
 docs/_build/
 
 # Generated assets (built from conf.py settings)
-docs/source/_static/logo.png
-docs/source/_static/custom.css
-docs/source/_static/button_horizontal.png
-docs/source/_static/button_website.png
+docs/_static/images/logo.png
+docs/_static/brand/button_horizontal.png
+docs/_static/brand/button_website.png
+docs/_static/custom.css
 
 # Python
 __pycache__/

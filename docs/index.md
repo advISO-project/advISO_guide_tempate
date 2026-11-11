@@ -10,18 +10,18 @@ This guide is still under development. Please check back for updates, and feel f
 
 ::::
 
-```{include} source/intro.md
+```{include} intro.md
 ```
 
 ---
 
-```{include} source/guide_series.md
+```{include} _includes/guide_series.md
 ```
 
 ---
 
-```{include} source/project_partners.md
+```{include} _includes/project_partners.md
 ```
 
-```{include} source/toc.md
+```{include} toc.md
 ```

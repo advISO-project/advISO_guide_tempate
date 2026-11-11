@@ -21,15 +21,13 @@ A Sphinx documentation template for creating advISO-branded guides, hosted on Re
    | `release` / `version` | Guide version numbers | `'1.0'` / `'1.0.0'` |
    | `under_development` | Show the "under development" banner on the index page | `True` or `False` |
 
-4. **Update the content** in `docs/source/`:
+4. **Update the content**:
 
    | File | Purpose |
    |---|---|
-   | `intro.md` | Introduction section included on the index page |
-   | `example_page.md` | A sample content page — rename or replace with your own |
-   | `guide_series.md` | Cross-links to other guides (button images are pre-included) |
-   | `project_partners.md` | Project partner information (shared across all guides) |
-   | `toc.md` | Table of contents — add your pages here |
+   | `docs/intro.md` | Introduction section included on the index page |
+   | `docs/toc.md` | Table of contents — add your pages here |
+   | `docs/pages/example_page.md` | A sample content page — rename or replace with your own |
 
 5. **Connect to Read the Docs.** Import the new repository on [readthedocs.org](https://readthedocs.org). The included `.readthedocs.yml` handles the build configuration automatically.
 
@@ -41,12 +39,12 @@ The logo, buttons, and sidebar CSS are generated automatically at build time fro
 
 | Asset | Generated from | Output |
 |---|---|---|
-| Sidebar logo | `logo_base.png` + `guide_subtitle` | `logo.png` |
-| Horizontal button | `button_base.png` + `guide_subtitle` + `sidebar_color` | `button_horizontal.png` |
-| Website banner (16:9) | `logo_base_16x9.png` + `guide_subtitle` + `sidebar_color` | `button_website.png` |
+| Sidebar logo | `base/logo_base.png` + `guide_subtitle` | `images/logo.png` |
+| Horizontal button | `base/button_base.png` + `guide_subtitle` + `sidebar_color` | `brand/button_horizontal.png` |
+| Website banner (16:9) | `base/logo_base_16x9.png` + `guide_subtitle` + `sidebar_color` | `brand/button_website.png` |
 | Sidebar CSS | `sidebar_color` | `custom.css` |
 
-The generation scripts are in `docs/generate_logo.py` and `docs/generate_buttons.py`. The base images in `docs/source/_static/` (`logo_base.png`, `button_base.png`, `logo_base_16x9.png`) are shared across all guides and should not be modified.
+The generation scripts are in `docs/_scripts/`. The base images in `docs/_static/base/` are shared across all guides and should not be modified.
 
 Generated files are listed in `.gitignore` — they are rebuilt on every Sphinx run and should not be committed.
 
@@ -55,17 +53,38 @@ Generated files are listed in `.gitignore` — they are rebuilt on every Sphinx 
 ```
 docs/
 ├── conf.py                  # Guide settings and Sphinx configuration
-├── generate_logo.py         # Logo generation script
-├── generate_buttons.py      # Button generation script
 ├── index.md                 # Index page
+├── intro.md                 # Introduction (edit this)
+├── toc.md                   # Table of contents (add your pages here)
 ├── requirements.txt         # Python dependencies for Read the Docs
-├── source/
-│   ├── _static/             # Static assets (base images, partner logos, etc.)
-│   ├── intro.md             # Introduction (included in index)
-│   ├── guide_series.md      # Cross-links to other advISO guides
-│   ├── project_partners.md  # Partner information
-│   ├── toc.md               # Table of contents tree
-│   └── example_page.md      # Example content page
+│
+├── pages/                   # Content pages — add your guide pages here
+│   └── example_page.md
+│
+├── _includes/               # Shared fragments (do not edit)
+│   ├── guide_series.md
+│   └── project_partners.md
+│
+├── _brand_assets/           # Brand assets page (hidden, accessible via direct URL)
+│   └── brand_assets.md
+│
+├── _scripts/                # Build-time asset generation
+│   ├── generate_logo.py
+│   └── generate_buttons.py
+│
+├── _static/
+│   ├── base/                # Template base images (do not modify)
+│   │   ├── button_base.png
+│   │   ├── logo_base.png
+│   │   └── logo_base_16x9.png
+│   ├── brand/               # Generated brand assets (gitignored)
+│   │   ├── button_horizontal.png
+│   │   └── button_website.png
+│   ├── images/              # Content images
+│   │   ├── logo.png         # Generated sidebar logo (gitignored)
+│   │   ├── guide_series_button_horizontal.png
+│   │   └── partner_logos.png
+│   └── custom.css           # Generated sidebar CSS (gitignored)
 ```
 
 ### Writing content
@@ -77,7 +96,7 @@ Pages are written in Markdown using [MyST](https://myst-parser.readthedocs.io/en
 - **sphinx-tabs** — tabbed content blocks
 - **sphinx.ext.ifconfig** — conditional content (used for the "under development" banner)
 
-To add a new page, create a `.md` file in `docs/source/` and add it to the `toctree` in `docs/source/toc.md`.
+To add a new page, create a `.md` file in `docs/pages/` and add it to the `toctree` in `docs/_includes/toc.md`.
 
 ## Building locally
 
@@ -91,7 +110,7 @@ The built site will be in `docs/_build/html/`. Open `index.html` to preview.
 
 ## Brand assets page
 
-A hidden page at `source/brand_assets.html` in the built docs shows all generated assets for review. It is not linked from the navigation — share the direct URL with anyone who needs the logos.
+A hidden page at `_brand_assets/brand_assets.html` in the built docs shows all generated assets for review. It is not linked from the navigation — share the direct URL with anyone who needs the logos.
 
 ## License
 

@@ -23,14 +23,14 @@ def _find_font():
     return None
 
 
-def generate_logo(subtitle, static_dir=None):
-    if static_dir is None:
-        static_dir = Path(__file__).parent / 'source' / '_static'
+def generate_logo(subtitle, docs_dir=None):
+    if docs_dir is None:
+        docs_dir = Path(__file__).parent.parent
     else:
-        static_dir = Path(static_dir)
+        docs_dir = Path(docs_dir)
 
-    base_path = static_dir / 'logo_base.png'
-    out_path = static_dir / 'logo.png'
+    base_path = docs_dir / '_static' / 'base' / 'logo_base.png'
+    out_path = docs_dir / '_static' / 'images' / 'logo.png'
 
     base = Image.open(base_path).convert('RGBA')
     base_w, base_h = base.size

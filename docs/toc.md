@@ -2,5 +2,5 @@
 :hidden:
 :maxdepth: 2
 
-source/example_page
+pages/example_page
 ```

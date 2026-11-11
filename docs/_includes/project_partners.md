@@ -6,7 +6,7 @@ This guide has been produced as part of the Wellcome Trust-funded project: *ISO 
 
 Find out more about the [advISO Bioinformatics accreditation in a box project](https://www.cardiff.ac.uk/adviso-bioinformatics-accreditation).
 
-```{figure} source/_static/partner_logos.png
+```{figure} _static/images/partner_logos.png
 :align: center
 :width: 650px
 ```

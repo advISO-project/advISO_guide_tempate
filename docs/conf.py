@@ -27,7 +27,7 @@ sidebar_color = '#5C9AD0'
 # To do: Set the GitHub repository URL for the guide. This is used to generate links to the guide's source code and issues on GitHub.
 github_repo = 'https://github.com/advISO-project/advISO_guide_template'
 
-html_logo = 'source/_static/logo.png'
+html_logo = '_static/images/logo.png'
 
 
 # ============================================================================
@@ -38,10 +38,10 @@ project = guide_name
 
 exclude_patterns = [
     '_build',
-    'source/intro.md',
-    'source/guide_series.md',
-    'source/project_partners.md',
-    'source/toc.md',
+    '_scripts',
+    '_includes',
+    'intro.md',
+    'toc.md',
 ]
 
 # -- Extensions --------------------------------------------------------------
@@ -88,7 +88,7 @@ intersphinx_disabled_domains = ['std']
 
 html_theme = 'sphinx_rtd_theme'
 
-html_static_path = ['source/_static']
+html_static_path = ['_static']
 
 html_css_files = [
     'custom.css',
@@ -107,13 +107,13 @@ epub_show_urls = 'footnote'
 
 # -- Build-time asset generation ---------------------------------------------
 
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '_scripts'))
 from generate_logo import generate_logo
 from generate_buttons import generate_buttons
 generate_logo(guide_subtitle)
 generate_buttons(guide_subtitle, sidebar_color)
 
-_css_path = os.path.join(os.path.dirname(__file__), 'source', '_static', 'custom.css')
+_css_path = os.path.join(os.path.dirname(__file__), '_static', 'custom.css')
 with open(_css_path, 'w') as _f:
     _f.write(f""".wy-side-nav-search,
 .wy-nav-top {{
