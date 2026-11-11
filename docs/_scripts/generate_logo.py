@@ -31,6 +31,7 @@ def generate_logo(subtitle, docs_dir=None):
 
     base_path = docs_dir / '_static' / 'base' / 'logo_base.png'
     out_path = docs_dir / '_static' / 'images' / 'logo.png'
+    out_path.parent.mkdir(parents=True, exist_ok=True)
 
     base = Image.open(base_path).convert('RGBA')
     base_w, base_h = base.size

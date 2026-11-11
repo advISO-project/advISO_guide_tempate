@@ -81,6 +81,7 @@ def generate_button(subtitle, bg_color, docs_dir=None):
 
     base_path = docs_dir / '_static' / 'base' / 'button_base.png'
     out_path = docs_dir / '_static' / 'brand' / 'button_horizontal.png'
+    out_path.parent.mkdir(parents=True, exist_ok=True)
 
     bg_rgb = _hex_to_rgb(bg_color) if isinstance(bg_color, str) else bg_color
 
@@ -171,6 +172,7 @@ def generate_website_banner(subtitle, bg_color, docs_dir=None):
 
     base_path = docs_dir / '_static' / 'base' / 'logo_base_16x9.png'
     out_path = docs_dir / '_static' / 'brand' / 'button_website.png'
+    out_path.parent.mkdir(parents=True, exist_ok=True)
 
     bg_rgb = _hex_to_rgb(bg_color) if isinstance(bg_color, str) else bg_color
 
