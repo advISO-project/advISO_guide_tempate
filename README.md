@@ -28,6 +28,7 @@ A Sphinx documentation template for creating advISO-branded guides, hosted on Re
    | `docs/intro.md` | Introduction section included on the index page |
    | `docs/toc.md` | Table of contents — add your pages here |
    | `docs/pages/example_page.md` | A sample content page — rename or replace with your own |
+   | `docs/contributors.yml` | List of authors, maintainers and contributors |
 
 5. **Connect to Read the Docs.** Import the new repository on [readthedocs.org](https://readthedocs.org). The included `.readthedocs.yml` handles the build configuration automatically.
 
@@ -43,6 +44,8 @@ The logo, buttons, and sidebar CSS are generated automatically at build time fro
 | Horizontal button | `base/button_base.png` + `guide_subtitle` + `sidebar_color` | `brand/button_horizontal.png` |
 | Website banner (16:9) | `base/logo_base_16x9.png` + `guide_subtitle` + `sidebar_color` | `brand/button_website.png` |
 | Sidebar CSS | `sidebar_color` | `custom.css` |
+| Contributors page | `contributors.yml` + `github_repo` | `pages/contributors.md` |
+| Brand settings snippet | `guide_subtitle` + `sidebar_color` | `_brand_assets/_settings.html` |
 
 The generation scripts are in `docs/_scripts/`. The base images in `docs/_static/base/` are shared across all guides and should not be modified.
 
@@ -70,7 +73,11 @@ docs/
 │
 ├── _scripts/                # Build-time asset generation
 │   ├── generate_logo.py
-│   └── generate_buttons.py
+│   ├── generate_buttons.py
+│   └── generate_contributors.py
+│
+├── _templates/              # Custom Jinja2 templates
+│   └── footer.html          # Footer with CC license and contributors link
 │
 ├── _static/
 │   ├── base/                # Template base images (do not modify)
@@ -84,19 +91,47 @@ docs/
 │   │   ├── logo.png         # Generated sidebar logo (gitignored)
 │   │   ├── guide_series_button_horizontal.png
 │   │   └── partner_logos.png
-│   └── custom.css           # Generated sidebar CSS (gitignored)
+│   ├── custom.css           # Generated sidebar CSS (gitignored)
+│   └── extra.css            # Guide-specific styles (footer arrows, etc.)
+│
+├── contributors.yml         # Authors, maintainers & contributors
 ```
 
 ### Writing content
 
-Pages are written in Markdown using [MyST](https://myst-parser.readthedocs.io/en/latest/), which adds Sphinx directives to standard Markdown. The template includes several Sphinx extensions:
+Pages are written in Markdown using [MyST](https://myst-parser.readthedocs.io/en/latest/), which adds Sphinx directives to standard Markdown. reStructuredText (`.rst`) files are also supported. The template includes several Sphinx extensions:
 
 - **MyST Parser** — write Markdown instead of reStructuredText
 - **sphinx-design** — grids, cards, tabs, badges
 - **sphinx-tabs** — tabbed content blocks
 - **sphinx.ext.ifconfig** — conditional content (used for the "under development" banner)
 
-To add a new page, create a `.md` file in `docs/pages/` and add it to the `toctree` in `docs/_includes/toc.md`.
+To add a new page, create a `.md` or `.rst` file in `docs/pages/` and add it to the `toctree` in `docs/toc.md`.
+
+### Contributors
+
+Each guide has a contributors page that is auto-generated from `docs/contributors.yml` at build time. The page is linked from the site footer and displays GitHub profile cards for everyone involved.
+
+Edit `docs/contributors.yml` to list the people behind your guide:
+
+```yaml
+intro: >
+  A short paragraph introducing your contributors page.
+
+authors:
+  - name: Jane Smith
+    github: janesmith
+
+maintainers:
+  - name: advISO Project
+    github: advISO-project
+
+contributors:
+  - name: John Doe
+    github: johndoe
+```
+
+Each person needs a `name` and their `github` username. The username is used to fetch their profile picture and link to their GitHub page. All three sections (`authors`, `maintainers`, `contributors`) are optional — omit any you don't need.
 
 ## Building locally
 

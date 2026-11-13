@@ -6,6 +6,8 @@ docs/_static/images/logo.png
 docs/_static/brand/button_horizontal.png
 docs/_static/brand/button_website.png
 docs/_static/custom.css
+docs/_brand_assets/_settings.html
+docs/pages/contributors.md
 
 # Python
 __pycache__/
