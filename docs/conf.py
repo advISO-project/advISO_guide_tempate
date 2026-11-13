@@ -22,7 +22,7 @@ under_development = True
 guide_subtitle = 'Guide Template'
 
 ## To do: Set the sidebar background colour (hex).
-sidebar_color = '#5C9AD0'
+sidebar_color = '#FAE3B1'
 
 # To do: Set the GitHub repository URL for the guide. This is used to generate links to the guide's source code and issues on GitHub.
 github_repo = 'https://github.com/advISO-project/advISO_guide_template'
