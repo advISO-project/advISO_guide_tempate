@@ -32,7 +32,6 @@ def generate_contributors(github_repo):
         config = yaml.safe_load(f)
 
     sections = []
-    sections.append("---\norphan: true\n---\n")
     sections.append("# Contributors\n")
 
     if config.get("intro"):
