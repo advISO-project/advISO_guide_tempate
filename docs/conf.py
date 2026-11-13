@@ -10,8 +10,8 @@ from datetime import date
 
 ## To do: Update guide name, author, copyright, release, version, and github_repo to match your guide.
 guide_name = 'advISO Guide Template'
-author = 'advISO'
-copyright = '2026, licensed under CC BY-NC-SA 4.0'
+author = 'advISO Team'
+copyright = f'{author} & contributors'
 release = '0.1'
 version = '0.1.0'
 
@@ -79,6 +79,16 @@ myst_substitutions = {
     'today_date': date.today().strftime(today_fmt),
 }
 
+# -- RST configuration (for .rst content pages) -----------------------------
+
+numfig = True
+
+rst_epilog = f"""
+
+.. |release| replace:: {release}
+.. |version| replace:: {version}
+"""
+
 # -- Intersphinx -------------------------------------------------------------
 
 intersphinx_mapping = {
@@ -92,9 +102,11 @@ intersphinx_disabled_domains = ['std']
 html_theme = 'sphinx_rtd_theme'
 
 html_static_path = ['_static']
+templates_path = ['_templates']
 
 html_css_files = [
     'custom.css',
+    'extra.css',
 ]
 
 html_theme_options = {
@@ -113,8 +125,10 @@ epub_show_urls = 'footnote'
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '_scripts'))
 from generate_logo import generate_logo
 from generate_buttons import generate_buttons
+from generate_contributors import generate_contributors
 generate_logo(guide_subtitle)
 generate_buttons(guide_subtitle, sidebar_color)
+generate_contributors(github_repo)
 
 _css_path = os.path.join(os.path.dirname(__file__), '_static', 'custom.css')
 with open(_css_path, 'w') as _f:
